@@ -3,6 +3,7 @@ FROM node:14.16.1-alpine as build
 WORKDIR /app
 COPY app.js app.test.js package.json server.js yarn.lock ./
 RUN yarn --frozen-lockfile
+RUN yarn lint
 RUN yarn test
 
 FROM node:14.16.1-alpine
