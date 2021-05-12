@@ -6,10 +6,26 @@
     "express": "^4.17.1"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:prettier/recommended"
+    ],
+    "env": {
+      "es2021": true,
+      "jest": true,
+      "node": true
+    }
   },
   "devDependencies": {
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "jest": "^26.6.3",
+    "prettier": "^2.3.0",
     "supertest": "^6.1.3"
   }
 }

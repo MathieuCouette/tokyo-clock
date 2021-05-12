@@ -5,6 +5,7 @@ COPY public public
 COPY src src
 COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile
+RUN yarn lint
 RUN yarn test --watchAll=false
 RUN yarn build
 
