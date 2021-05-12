@@ -1,9 +1,7 @@
 FROM node:14.16.1-alpine as build
 
 WORKDIR /app
-COPY public public
-COPY src src
-COPY package.json yarn.lock ./
+COPY . ./
 RUN yarn --frozen-lockfile
 RUN yarn lint
 RUN yarn test --watchAll=false
