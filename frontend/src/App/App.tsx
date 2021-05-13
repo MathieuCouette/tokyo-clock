@@ -11,11 +11,11 @@ function App() {
         <Clock timeZone="Asia/Tokyo" />
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/MathieuCouette/tokyo-clock"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          GitHub
         </a>
       </header>
     </div>
