@@ -7,15 +7,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Clock />
         <Clock timeZone="Asia/Tokyo" />
+        <Clock />
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/MathieuCouette/tokyo-clock"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          GitHub
         </a>
       </header>
     </div>

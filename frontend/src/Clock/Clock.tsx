@@ -23,8 +23,8 @@ function Clock(props: ClockProps) {
 
   return (
     <div>
-      <h1>{timeZone}</h1>
-      <p>{dateTime.toLocaleString(locale, { timeZone: timeZone })}</p>
+      <h1>{dateTime.toLocaleString(locale, { timeZone: timeZone })}</h1>
+      <p>{timeZone}</p>
     </div>
   );
 }
