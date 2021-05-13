@@ -65,7 +65,7 @@ describe("when the time zone is defined", () => {
     render(<Clock timeZone="Asia/Tokyo" />);
 
     act(() => {
-      jest.runTimersToTime(1000);
+      jest.runTimersToTime(580);
     });
     const element = screen.getByText("2069-04-20, 10:37:43 p.m.");
     expect(element).toBeInTheDocument();

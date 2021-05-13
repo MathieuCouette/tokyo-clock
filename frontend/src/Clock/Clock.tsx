@@ -8,10 +8,8 @@ function Clock(props: ClockProps) {
   const [dateTime, setDateTime] = useState(new Date(Date.now()));
 
   useEffect(() => {
-    const intervalId = setInterval(
-      () => setDateTime(new Date(Date.now())),
-      1000
-    );
+    const ms = 1000 - dateTime.getMilliseconds();
+    const intervalId = setInterval(() => setDateTime(new Date(Date.now())), ms);
     return () => clearInterval(intervalId);
   });
 
