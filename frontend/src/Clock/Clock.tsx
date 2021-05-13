@@ -12,7 +12,6 @@ function Clock(props: ClockProps) {
       () => setDateTime(new Date(Date.now())),
       1000
     );
-    console.log("useEffect" + dateTime);
     return () => clearInterval(intervalId);
   });
 
