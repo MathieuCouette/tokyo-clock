@@ -1,10 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import Clock from "./Clock";
 
 beforeEach(() => {
-  jest
-    .spyOn(global.Date, "now")
-    .mockImplementation(() => Date.parse("2069-04-20T13:37:42.420Z"));
+  jest.useFakeTimers("modern");
+  jest.setSystemTime(Date.parse("2069-04-20T13:37:42.420Z"));
   jest.spyOn(Intl, "DateTimeFormat").mockImplementation(
     () =>
       ({
@@ -14,6 +13,11 @@ beforeEach(() => {
         }),
       } as Intl.DateTimeFormat)
   );
+});
+
+afterEach(() => {
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
 });
 
 describe("when the time zone is not defined", () => {
@@ -30,6 +34,16 @@ describe("when the time zone is not defined", () => {
     const element = screen.getByText("2069-04-20, 9:37:42 a.m.");
     expect(element).toBeInTheDocument();
   });
+
+  it("should render the formatted date time every second", () => {
+    render(<Clock />);
+
+    act(() => {
+      jest.runTimersToTime(1000);
+    });
+    const element = screen.getByText("2069-04-20, 9:37:43 a.m.");
+    expect(element).toBeInTheDocument();
+  });
 });
 
 describe("when the time zone is defined", () => {
@@ -44,6 +58,16 @@ describe("when the time zone is defined", () => {
     render(<Clock timeZone="Asia/Tokyo" />);
 
     const element = screen.getByText("2069-04-20, 10:37:42 p.m.");
+    expect(element).toBeInTheDocument();
+  });
+
+  it("should render the formatted date time every second", () => {
+    render(<Clock timeZone="Asia/Tokyo" />);
+
+    act(() => {
+      jest.runTimersToTime(1000);
+    });
+    const element = screen.getByText("2069-04-20, 10:37:43 p.m.");
     expect(element).toBeInTheDocument();
   });
 });
