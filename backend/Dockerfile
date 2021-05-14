@@ -12,5 +12,5 @@ WORKDIR /app
 COPY --from=build /app/src src
 COPY --from=build /app/package.json /app/yarn.lock ./
 RUN yarn --frozen-lockfile --production
-EXPOSE 3000
+EXPOSE 30000
 CMD ["node", "src/server.js"]
