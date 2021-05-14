@@ -9,11 +9,11 @@ function Clock(props: ClockProps) {
 
   useEffect(() => {
     const remainingMilliseconds = 1000 - dateTime.getMilliseconds();
-    const intervalId = setInterval(
+    const timeout = setTimeout(
       () => setDateTime(new Date(Date.now())),
       remainingMilliseconds
     );
-    return () => clearInterval(intervalId);
+    return () => clearTimeout(timeout);
   });
 
   const locale = Intl.DateTimeFormat().resolvedOptions().locale;
