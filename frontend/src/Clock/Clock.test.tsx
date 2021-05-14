@@ -20,7 +20,7 @@ afterEach(() => {
   jest.useRealTimers();
 });
 
-describe("when the time zone is not defined", () => {
+describe("when the backend URL is not defined", () => {
   it("should render the local time zone", () => {
     render(<Clock />);
 
@@ -46,24 +46,37 @@ describe("when the time zone is not defined", () => {
   });
 });
 
-describe("when the time zone is defined", () => {
-  it("should render the time zone", () => {
-    render(<Clock timeZone="Asia/Tokyo" />);
+describe("when the backend URL is defined", () => {
+  beforeEach(() => {
+    jest.spyOn(global, "fetch").mockImplementation((input) =>
+      input === "http://localhost:3000/"
+        ? Promise.resolve({
+            json: () => Promise.resolve({ timeZone: "Asia/Tokyo" }),
+          } as Response)
+        : Promise.reject()
+    );
+  });
 
+  it("should render the backend time zone", async () => {
+    render(<Clock backendUrl="http://localhost:3000" />);
+
+    await act(() => Promise.resolve());
     const element = screen.getByText("Asia/Tokyo");
     expect(element).toBeInTheDocument();
   });
 
-  it("should render the formatted date time", () => {
-    render(<Clock timeZone="Asia/Tokyo" />);
+  it("should render the formatted date time", async () => {
+    render(<Clock backendUrl="http://localhost:3000" />);
 
+    await act(() => Promise.resolve());
     const element = screen.getByText("2069-04-20, 10:37:42 p.m.");
     expect(element).toBeInTheDocument();
   });
 
-  it("should render the formatted date time every second", () => {
-    render(<Clock timeZone="Asia/Tokyo" />);
+  it("should render the formatted date time every second", async () => {
+    render(<Clock backendUrl="http://localhost:3000" />);
 
+    await act(() => Promise.resolve());
     act(() => {
       jest.runTimersToTime(580);
     });

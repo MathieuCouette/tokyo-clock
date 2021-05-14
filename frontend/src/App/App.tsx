@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Clock timeZone="Asia/Tokyo" />
+        <Clock backendUrl={process.env.REACT_APP_BACKEND_URL} />
         <Clock />
         <a
           className="App-link"

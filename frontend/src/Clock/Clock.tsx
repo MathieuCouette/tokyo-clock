@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 type ClockProps = {
-  timeZone?: string;
+  backendUrl?: string;
 };
 
 function Clock(props: ClockProps) {
@@ -14,10 +14,17 @@ function Clock(props: ClockProps) {
   });
 
   const locale = Intl.DateTimeFormat().resolvedOptions().locale;
-  const timeZone =
-    props.timeZone !== undefined
-      ? props.timeZone
-      : Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const [timeZone, setTimeZone] = useState(
+    Intl.DateTimeFormat().resolvedOptions().timeZone
+  );
+
+  useEffect(() => {
+    if (props.backendUrl !== undefined) {
+      fetch(props.backendUrl + "/").then((response) =>
+        response.json().then((data) => setTimeZone(data.timeZone))
+      );
+    }
+  }, [props.backendUrl]);
 
   return (
     <div>
