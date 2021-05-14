@@ -16,7 +16,7 @@ The **frontend** has a single page, which displays a local clock and a clock bas
 
 ## Run the unit tests
 
-Make sure that you have Node.js installed.
+Make sure that you have Node.js and Yarn installed.
 
 ```sh
 cd backend
@@ -34,7 +34,7 @@ yarn test
 
 ## Serve with Node.js
 
-Make sure that you have Node.js installed.
+Make sure that you have Node.js and Yarn installed.
 
 ```sh
 cd backend
