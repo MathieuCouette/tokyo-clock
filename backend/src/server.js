@@ -5,7 +5,7 @@ const server = app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
-process.on("SIGTERM", () => {
+function shutDown() {
   console.log("Server shutting down");
   server.close((err) => {
     if (err) {
@@ -14,4 +14,7 @@ process.on("SIGTERM", () => {
       console.log("Server shut down successfully");
     }
   });
-});
+}
+
+process.on("SIGTERM", shutDown);
+process.on("SIGINT", shutDown);
