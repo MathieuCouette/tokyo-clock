@@ -1,7 +1,7 @@
 import { act, render, screen } from "@testing-library/react";
 import App from "./App";
 
-it("renders the logo", async () => {
+it("should render the logo", async () => {
   render(<App />);
 
   await act(() => Promise.resolve());
@@ -9,7 +9,7 @@ it("renders the logo", async () => {
   expect(element).toBeInTheDocument();
 });
 
-it("renders the backend clock", async () => {
+it("should render the backend clock", async () => {
   render(<App />);
 
   await act(() => Promise.resolve());
@@ -17,7 +17,7 @@ it("renders the backend clock", async () => {
   expect(element).toBeInTheDocument();
 });
 
-it("renders the local clock", async () => {
+it("should render the local clock", async () => {
   render(<App />);
 
   await act(() => Promise.resolve());
@@ -27,7 +27,7 @@ it("renders the local clock", async () => {
   expect(element).toBeInTheDocument();
 });
 
-it("renders the GitHub link", async () => {
+it("should render the GitHub link", async () => {
   render(<App />);
 
   await act(() => Promise.resolve());
