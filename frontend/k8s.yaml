@@ -7,8 +7,9 @@ spec:
     app: frontend
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 30001
+      targetPort: 30001
+      nodePort: 30001
   type: NodePort
 ---
 apiVersion: apps/v1

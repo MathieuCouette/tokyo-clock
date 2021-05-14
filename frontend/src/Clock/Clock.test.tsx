@@ -49,7 +49,7 @@ describe("when the backend URL is not defined", () => {
 describe("when the backend URL is defined", () => {
   beforeEach(() => {
     jest.spyOn(global, "fetch").mockImplementation((input) =>
-      input === "http://localhost:3000/"
+      input === "http://localhost:30000/"
         ? Promise.resolve({
             json: () => Promise.resolve({ timeZone: "Asia/Tokyo" }),
           } as Response)
@@ -58,7 +58,7 @@ describe("when the backend URL is defined", () => {
   });
 
   it("should render the backend time zone", async () => {
-    render(<Clock backendUrl="http://localhost:3000" />);
+    render(<Clock backendUrl="http://localhost:30000" />);
 
     await act(() => Promise.resolve());
     const element = screen.getByText("Asia/Tokyo");
@@ -66,7 +66,7 @@ describe("when the backend URL is defined", () => {
   });
 
   it("should render the formatted date time", async () => {
-    render(<Clock backendUrl="http://localhost:3000" />);
+    render(<Clock backendUrl="http://localhost:30000" />);
 
     await act(() => Promise.resolve());
     const element = screen.getByText("2069-04-20, 10:37:42 p.m.");
@@ -74,7 +74,7 @@ describe("when the backend URL is defined", () => {
   });
 
   it("should render the formatted date time every second", async () => {
-    render(<Clock backendUrl="http://localhost:3000" />);
+    render(<Clock backendUrl="http://localhost:30000" />);
 
     await act(() => Promise.resolve());
     act(() => {
