@@ -39,7 +39,8 @@ describe("when the backend URL is not defined", () => {
     render(<Clock />);
 
     act(() => {
-      jest.runTimersToTime(1000);
+      const remainingMilliseconds = 580;
+      jest.runTimersToTime(remainingMilliseconds);
     });
     const element = screen.getByText("2069-04-20, 9:37:43 a.m.");
     expect(element).toBeInTheDocument();
@@ -68,7 +69,8 @@ describe("when the backend URL is defined", () => {
 
     await act(() => Promise.resolve());
     act(() => {
-      jest.runTimersToTime(580);
+      const remainingMilliseconds = 580;
+      jest.runTimersToTime(remainingMilliseconds);
     });
     const element = screen.getByText("2069-04-20, 10:37:43 p.m.");
     expect(element).toBeInTheDocument();
