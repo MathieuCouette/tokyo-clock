@@ -17,7 +17,7 @@ it("renders the backend clock", async () => {
   expect(element).toBeInTheDocument();
 });
 
-it("renders the local clock second", async () => {
+it("renders the local clock", async () => {
   render(<App />);
 
   await act(() => Promise.resolve());
