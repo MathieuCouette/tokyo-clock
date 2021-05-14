@@ -6,7 +6,7 @@ import "@testing-library/jest-dom";
 
 beforeEach(() => {
   jest.spyOn(global, "fetch").mockImplementation((input) =>
-    input === "http://localhost:30000/"
+    input === process.env.REACT_APP_BACKEND_URL + "/"
       ? Promise.resolve({
           json: () => Promise.resolve({ timeZone: "Asia/Tokyo" }),
         } as Response)
