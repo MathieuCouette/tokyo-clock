@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . ./
 RUN yarn --frozen-lockfile
 RUN yarn lint
-RUN yarn test --watchAll=false
+RUN yarn test
 RUN yarn build
 
 FROM nginx:1.20.0-alpine
